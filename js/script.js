@@ -12,6 +12,8 @@
     startGame();
 
     function startGame() {
+        images = randomSort(images);
+
         var frontFaces = document.getElementsByClassName("front");
 
         for (var i = 0; i < 16; i++) {
@@ -24,6 +26,26 @@
 
             frontFaces[i].style.background = "url('" + images[i].src + "')";
             frontFaces[i].setAttribute("id", images[i].id);
+        }
+
+        /**
+         * randomSort
+         * retorna um número aleatório inteiro de 0 até 10
+         */
+        function randomSort(oldArray) {
+            Math.floor(Math.random() * 11);
+
+            var newArray = [];
+
+            while (newArray.length !== oldArray.length) {
+                var i = Math.floor(Math.random() * oldArray.length);
+
+                if (newArray.indexOf(oldArray[i]) < 0) {
+                    newArray.push(oldArray[i]);
+                }
+            }
+
+            return newArray;
         }
 
         function flipCard() {
